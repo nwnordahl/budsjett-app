@@ -29,7 +29,7 @@ export default function ViewExpensesModal({ budgetId, handleClose }) {
                   handleClose();
                 }}
               >
-                Fjern
+                Fjern kategori
               </Button>
             )}
           </Stack>
