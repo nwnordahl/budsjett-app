@@ -4,6 +4,8 @@ import { useBudgets } from "./contexts/BudgetsContext";
 import BudgetCard from "./components/BudgetCard";
 import AddBudgetModal from "./components/AddBudgetModal";
 import AddExpenseModal from "./components/AddExpenseModal";
+import UncategorizedBudgetCard from "./components/UncategorizedBudgetCard";
+import TotalBudgetCard from "./components/TotalBudgetCard";
 
 export default function App() {
   const [showAddBudgetModal, setShowAddBudgetModal] = useState(false);
@@ -25,10 +27,7 @@ export default function App() {
           <Button variant="primary" onClick={() => setShowAddBudgetModal(true)}>
             Legg til kategori
           </Button>
-          <Button
-            variant="outline-primary"
-            onClick={() => setShowAddExpenseModal(true)}
-          >
+          <Button variant="outline-primary" onClick={openAddExpenseModal}>
             Legg til utgift
           </Button>
         </Stack>
@@ -49,6 +48,8 @@ export default function App() {
               />
             );
           })}
+          <UncategorizedBudgetCard onAddExpenseClick={openAddExpenseModal} />
+          <TotalBudgetCard />
         </Stack>
       </Container>
       <AddBudgetModal
@@ -57,6 +58,7 @@ export default function App() {
       />
       <AddExpenseModal
         show={showAddExpenseModal}
+        defaultBudgetId={addExpenseModalBudgetId}
         handleClose={() => setShowAddExpenseModal(false)}
       />
     </>
