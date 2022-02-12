@@ -34,7 +34,7 @@ export default function App() {
           </Button>
         </Stack>
         <Stack gap="3">
-          {budgets.length == 0 && expenses.length == 0 && (
+          {budgets.length === 0 && expenses.length === 0 && (
             <p className="text-muted">
               Du har ingen kategorier. <br /> Legg til en ny kategori ved å
               trykke på "Legg til kategori".
