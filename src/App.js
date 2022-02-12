@@ -14,7 +14,7 @@ export default function App() {
   const [addExpenseModalBudgetId, setAddExpenseModalBudgetId] = useState();
   const [viewExpensesModalBudgetId, setViewExpensesModalBudgetId] = useState();
 
-  const { budgets, getBudgetExpenses } = useBudgets();
+  const { budgets, getBudgetExpenses, expenses } = useBudgets();
 
   function openAddExpenseModal(budgetId) {
     setShowAddExpenseModal(true);
@@ -34,6 +34,12 @@ export default function App() {
           </Button>
         </Stack>
         <Stack gap="3">
+          {budgets.length == 0 && expenses.length == 0 && (
+            <p className="text-muted">
+              Du har ingen kategorier. <br /> Legg til en ny kategori ved å
+              trykke på "Legg til kategori".
+            </p>
+          )}
           {budgets.map((budget) => {
             const amount = getBudgetExpenses(budget.id).reduce(
               (total, expense) => total + expense.amount,

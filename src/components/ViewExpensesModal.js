@@ -19,19 +19,8 @@ export default function ViewExpensesModal({ budgetId, handleClose }) {
     <Modal show={budgetId != null} onHide={handleClose} animation={false}>
       <Modal.Header closeButton>
         <Modal.Title>
-          <Stack direction="horizontal" gap="2">
-            <div>Utgifter - {budget?.name}</div>
-            {budgetId !== UNCATEGORIZED_BUDGET_ID && (
-              <Button
-                variant="outline-danger"
-                onClick={() => {
-                  deleteBudget(budget);
-                  handleClose();
-                }}
-              >
-                Fjern kategori
-              </Button>
-            )}
+          <Stack direction="horizontal" gap="3">
+            <h1>{budget?.name}</h1>
           </Stack>
         </Modal.Title>
       </Modal.Header>
@@ -46,12 +35,27 @@ export default function ViewExpensesModal({ budgetId, handleClose }) {
                   onClick={() => deleteExpense(expense)}
                   size="sm"
                   variant="outline-danger"
+                  className="ms-1"
                 >
                   &times;
                 </Button>
               </Stack>
             );
           })}
+          <Stack direction="horizontal">
+            {budgetId !== UNCATEGORIZED_BUDGET_ID && (
+              <Button
+                variant="outline-danger"
+                onClick={() => {
+                  deleteBudget(budget);
+                  handleClose();
+                }}
+                className="ms-auto mt-2"
+              >
+                Fjern kategori
+              </Button>
+            )}
+          </Stack>
         </Stack>
       </Modal.Body>
     </Modal>
