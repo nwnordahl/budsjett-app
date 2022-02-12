@@ -26,6 +26,11 @@ export default function ViewExpensesModal({ budgetId, handleClose }) {
       </Modal.Header>
       <Modal.Body>
         <Stack direction="vertical" gap="3">
+          {expenses.length === 0 && (
+            <p className="text-muted">
+              Du har ingen utgifter i denne kategorien.
+            </p>
+          )}
           {expenses.map((expense) => {
             return (
               <Stack direction="horizontal" gap="2" key={expense.id}>
@@ -50,7 +55,7 @@ export default function ViewExpensesModal({ budgetId, handleClose }) {
                   deleteBudget(budget);
                   handleClose();
                 }}
-                className="ms-auto mt-2"
+                className="ms-auto mt-1"
               >
                 Fjern kategori
               </Button>
